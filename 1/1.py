@@ -11,21 +11,21 @@ def testData():
     print("Runs test data")
     result = runCode(test)
 
-    if result == int(answer):
+    if result == int(answer): #not always int
         status = True
  
-    print(status)
+    print("Correct answer: " + answer + "My answer: " + str(result))
     return status
     
 
 def runCode(data):
     print("Runs code")
     
-    print(data)
+    #print(data)
     
     result = int(data[0].strip())*int(data[1].strip())
     
-    print(result)
+    #print(result)
     
     return result
 
