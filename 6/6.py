@@ -1,3 +1,5 @@
+import numpy as np
+
 
 def testData():
 
@@ -21,18 +23,31 @@ def testData():
 def runCode(data):
     print("Runs code")
     
+    decls = []
+    decl = ''
+    dlist = []
+    total = 0
+    
     #a list of numbers
-    for i in range(0, len(data)-1):
-        for j in range(i+1, len(data)):
-            a = int(data[i])
-            b = int(data[j])
-            
-            #print(a, b)
-            
-            if (a + b == 2020):
-                return a*b    
+    for line in data:
 
-    return -1
+        if line != '\n':
+            decl += line.strip()
+        else:
+            for l in decl:
+                dlist.append(l)
+            decls.append(dlist)
+            decl = ''
+            dlist = []
+    decls.append(decl) 
+        
+    #Makes a set to eliminate duplicates and count the list
+    for de in decls:
+        uniques = set(de)
+        answers = len(uniques)
+        total += answers
+
+    return total
 
 #Runs testdata
 testResult = testData()

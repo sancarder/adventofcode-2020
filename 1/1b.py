@@ -22,15 +22,17 @@ def runCode(data):
     print("Runs code")
     
     #a list of numbers
-    for i in range(0, len(data)-1):
-        for j in range(i+1, len(data)):
-            a = int(data[i])
-            b = int(data[j])
+    for i in range(0, len(data)-2):
+        for j in range(i+1, len(data)-1):
+            for k in range(i+2, len(data)):
+                a = int(data[i])
+                b = int(data[j])
+                c = int(data[k])
             
-            #print(a, b)
+                #print(a, b)
             
-            if (a + b == 2020):
-                return a*b    
+                if (a + b + c == 2020):
+                    return a*b*c    
 
     return -1
 

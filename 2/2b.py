@@ -21,18 +21,29 @@ def testData():
 def runCode(data):
     print("Runs code")
     
+    correctPasswords = 0
+    
     #a list of numbers
-    for i in range(0, len(data)-1):
-        for j in range(i+1, len(data)):
-            a = int(data[i])
-            b = int(data[j])
-            
-            #print(a, b)
-            
-            if (a + b == 2020):
-                return a*b    
+    for line in data:
+        pos1true = False
+        pos2true = False
 
-    return -1
+        rule, passw = line.split(':')
+        password = passw.strip()
+        positions, letter = rule.split()
+        tempPos = positions.split('-')
+        pos1 = int(tempPos[0])
+        pos2 = int(tempPos[1])
+        
+        if (password[pos1-1] == letter):
+            pos1true = True
+        if (password[pos2-1] == letter):
+            pos2true = True
+
+        if (pos1true != pos2true):
+            correctPasswords +=1 
+
+    return correctPasswords
 
 #Runs testdata
 testResult = testData()

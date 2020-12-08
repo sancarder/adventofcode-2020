@@ -21,18 +21,20 @@ def testData():
 def runCode(data):
     print("Runs code")
     
+    correctPasswords = 0
+    
     #a list of numbers
-    for i in range(0, len(data)-1):
-        for j in range(i+1, len(data)):
-            a = int(data[i])
-            b = int(data[j])
-            
-            #print(a, b)
-            
-            if (a + b == 2020):
-                return a*b    
+    for line in data:
+        rule, password = line.split(':')
+        times, letter = rule.split()
+        mini, maxi = times.split('-')
 
-    return -1
+        c = password.strip().count(letter.strip())
+        
+        if (int(c) >= int(mini) and int(c) <= int(maxi)):
+           correctPasswords +=1 
+
+    return correctPasswords
 
 #Runs testdata
 testResult = testData()
